@@ -31,7 +31,6 @@ export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit,
     [onSubmit]
   );
 
-
   return (
     <section>
       <div className="absolute top-3 sm:top-4 left-5">
@@ -78,27 +77,7 @@ export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit,
           aria-label="Todo"
         />
       </form>
-      <a id={`delete`} className="absolute top-0 right-0" onClick="">
-        <img
-          src="/images/icon-cross.svg"
-          className={`
-          cursor-pointer
-          sm:w-14.5
-          sm:h-14.5
-          sm:p-5
-          w-12
-          h-12
-          p-4.5
-          hover:filter-black
-          dark:hover:filter-white
-          hover:animate-spin-fast
-          visible
-          xl:invisible
 
-        `}
-          alt="Delete Todo"
-        />
-      </a>
     </section>
   );
 }
