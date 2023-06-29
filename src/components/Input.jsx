@@ -3,17 +3,39 @@ import { useTheme } from "next-themes";
 
 export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit, onDelete, rounded, readonly }) {
   const { theme } = useTheme();
+  console.log(todo);
 
-  const updateInput = useCallback(() => {}, []);
+  const updateInput = useCallback(
+    (e) => {
+      onInputChange(e.target.value);
+    },
+    [onInputChange]
+  );
+
   const updateChecked = useCallback(() => {}, []);
-  const handleInputClick = useCallback(() => {}, []);
-  const handleSubmit = useCallback((e) => {}, []);
+
+  const handleInputClick = useCallback(() => {
+    if (!readonly) return;
+
+    // onCheckboxChange(!todo.completed);
+  }, [todo]);
+
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+
+      if (onSubmit) {
+        onSubmit();
+      }
+    },
+    [onSubmit]
+  );
+
 
   return (
     <section>
       <div className="absolute top-3 sm:top-4 left-5">
         <div className="relative">
-         
           <img
             className={`
             absolute
@@ -41,16 +63,16 @@ export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit,
           pr-8
           pl-14
           sm:pl-16
-          dark:bg-dark_veryDarkDesaturatedBlue
+          dark:bg-slate-500
           cursor-pointer
           transition
           ease-linear
 
         `}
           placeholder="Create a new todo.."
-          value=""
-          onChange=""
-          onClick=""
+          value={todo.value}
+          onChange={updateInput}
+          onClick={handleInputClick}
           readOnly={readonly}
           maxLength={125}
           aria-label="Todo"
