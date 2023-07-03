@@ -23,8 +23,11 @@ export default function Home() {
   };
 
   const handleCheckboxChange = () => {};
+
   const handleSubmit = () => {
-    addTodo(newTodo.value);
+    if (newTodo.value !== "") {
+      addTodo(newTodo.value);
+    }
 
     // after submitting clear the input
     setNewTodo({
