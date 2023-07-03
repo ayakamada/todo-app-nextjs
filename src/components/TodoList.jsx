@@ -1,4 +1,3 @@
-import { useTodoContext } from "@/context/TodoContext";
 import useTodos from "@/hooks/useTodos";
 
 import CloseIcon from "@/svgs/closeIcon";
@@ -20,11 +19,7 @@ const TodoItem = ({ todo, idx }) => {
         <p className="text-sm sm:text-base">{todo.title}</p>
       </div>
       <div className="w-5 h-5 relative">
-        <a
-          id={`delete`}
-          className="absolute top-0 right-0"
-          onClick={() => deleteTodo(idx)}
-        >
+        <a id={`delete`} className="absolute top-0 right-0" onClick={() => deleteTodo(idx)}>
           <CloseIcon
             className="
               sm:w-6
@@ -54,7 +49,7 @@ export default function TodoList() {
             key={i}
             className="group transition ease-in-out cursor-pointer py-4 sm:py-4.5 pr-8 pl-8 dark:bg-gray-800 first:rounded-t last:rounded-b border-b border-gray-600"
           >
-            <TodoItem todo={todo}  idx={i} />
+            <TodoItem todo={todo} idx={i} />
           </div>
         ))}
       </div>
