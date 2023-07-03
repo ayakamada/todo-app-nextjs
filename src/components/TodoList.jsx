@@ -3,6 +3,7 @@ import CloseIcon from "@/svgs/closeIcon";
 import CheckedIcon from "@/svgs/checkedIcon";
 
 const TodoItem = ({ todo }) => {
+  const { deleteTodo } = useTodos();
   return (
     <div className="flex justify-between items-center  ">
       <div className="flex items-center">
@@ -37,7 +38,7 @@ const TodoItem = ({ todo }) => {
 };
 
 export default function TodoList() {
-  const { todos } = useTodoContext();
+  const { todos } = useTodos();
   return (
     <div className="mt-5 sm:mt-7">
       <div className="rounded">
