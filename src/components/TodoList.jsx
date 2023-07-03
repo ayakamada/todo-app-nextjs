@@ -20,7 +20,11 @@ const TodoItem = ({ todo, idx }) => {
         <p className="text-sm sm:text-base">{todo.title}</p>
       </div>
       <div className="w-5 h-5 relative">
-        <a id={`delete`} className="absolute top-0 right-0" onClick="">
+        <a
+          id={`delete`}
+          className="absolute top-0 right-0"
+          onClick={() => deleteTodo(idx)}
+        >
           <CloseIcon
             className="
               sm:w-6
