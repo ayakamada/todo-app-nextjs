@@ -2,12 +2,10 @@ import Head from "next/head";
 import { ReactElement, useState } from "react";
 
 import Footer from "../components/Footer";
-// import Toggle from "../components/Toggle";
 import Input from "../components/Input";
 import TodoList from "../components/TodoList";
-// import Todo from "../types/todo.type";
-// import useTodos from "../components/hooks/useTodos";
-import { useTodoContext } from "@/context/TodoContext";
+import useTodos from "@/hooks/useTodos";
+// import { useTodoContext } from "@/context/TodoContext";
 
 export default function Home() {
   // const [todo, setTodo] = useState({ title: "", isDone: false });
