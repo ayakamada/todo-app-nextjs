@@ -1,9 +1,8 @@
 import React, { ReactElement, useCallback } from "react";
 import { useTheme } from "next-themes";
 
-export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit, onDelete, rounded, readonly }) {
+export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit, readonly }) {
   const { theme } = useTheme();
-  console.log(todo);
 
   const updateInput = useCallback(
     (e) => {
