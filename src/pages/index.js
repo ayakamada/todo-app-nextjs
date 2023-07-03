@@ -9,7 +9,7 @@ import useTodos from "@/hooks/useTodos";
 
 export default function Home() {
   // const [todo, setTodo] = useState({ title: "", isDone: false });
-  const { addTodo } = useTodoContext();
+  const { addTodo } = useTodos();
 
   const [newTodo, setNewTodo] = useState("");
 
