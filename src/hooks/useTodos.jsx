@@ -5,12 +5,11 @@ import shortid from "shortid";
 import todoState from "@/recoil/atoms/todo";
 import filteredTodoState from "@/recoil/selectors/todo-filter";
 
-import { removeItemAtIndex } from "@/utils/array";
+import { removeItemAtIndex, replaceItemAtIndex } from "@/utils/array";
 
 const useTodos = () => {
   const todos = useRecoilValue(filteredTodoState);
   const [todoList, setTodoList] = useRecoilState(todoState);
-
 
   const addTodo = useCallback(
     (todo) => {
@@ -27,9 +26,24 @@ const useTodos = () => {
     [setTodoList]
   );
 
+  // delete item
   const deleteTodo = useCallback(
     (idx) => {
       const newList = removeItemAtIndex(todos, idx);
+
+      setTodoList(newList);
+    },
+    [setTodoList, todos]
+  );
+
+  // change isDone
+  const updateTodoIsDone = useCallback(
+    (idx, isDone) => {
+      const item = todos[idx];
+      const newList = replaceItemAtIndex(todos, idx, {
+        ...item,
+        isDone,
+      });
 
       setTodoList(newList);
     },
@@ -41,6 +55,7 @@ const useTodos = () => {
     setTodoList,
     addTodo,
     deleteTodo,
+    updateTodoIsDone,
   };
 };
 
