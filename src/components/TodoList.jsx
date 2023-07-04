@@ -3,9 +3,7 @@ import useTodos from "@/hooks/useTodos";
 import CloseIcon from "@/svgs/closeIcon";
 import CheckedIcon from "@/svgs/checkedIcon";
 
-const TodoItem = ({ todo, idx }) => {
-  const { deleteTodo } = useTodos();
-
+const TodoItem = ({ todo, idx, deleteTodo }) => {
   return (
     <div className="flex justify-between items-center  ">
       <div className="flex items-center">
@@ -49,7 +47,7 @@ export default function TodoList() {
             key={i}
             className="group transition ease-in-out cursor-pointer py-4 sm:py-4.5 pr-8 pl-8 dark:bg-gray-800 first:rounded-t last:rounded-b border-b border-gray-600"
           >
-            <TodoItem todo={todo} idx={i} />
+            <TodoItem todo={todo} deleteTodo={deleteTodo} idx={i} />
           </div>
         ))}
       </div>
