@@ -3,7 +3,7 @@ import useTodos from "@/hooks/useTodos";
 import CloseIcon from "@/svgs/closeIcon";
 import CheckedIcon from "@/svgs/checkedIcon";
 
-const TodoItem = ({ todo, idx, deleteTodo }) => {
+const TodoItem = ({ todo, idx, deleteTodo, updateTodoIsDone }) => {
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center">
@@ -11,6 +11,7 @@ const TodoItem = ({ todo, idx, deleteTodo }) => {
           className={`w-6 h-6 flex items-center justify-center rounded-full border dark:border-white/50  mr-4 hover:border-indigo-500 ${
             todo.isDone ? "bg-gradient-to-r from-cyan-500 to-purple-500 border-0" : ""
           }`}
+          onClick={() => updateTodoIsDone(idx, !todo.isDone)}
         >
           <CheckedIcon className={` ${todo.isDone ? "text-white w-4 h-4 mx-auto" : "invisible"}`} />
         </div>
@@ -46,9 +47,8 @@ export default function TodoList() {
           <div
             key={i}
             className="group transition ease-in-out cursor-pointer py-4 sm:py-4.5 pr-8 pl-8 dark:bg-gray-800 first:rounded-t last:rounded-b border-b border-gray-600"
-            onClick={() => updateTodoIsDone(i, !todo.isDone)}
           >
-            <TodoItem todo={todo} deleteTodo={deleteTodo} idx={i} />
+            <TodoItem todo={todo} deleteTodo={deleteTodo} updateTodoIsDone={updateTodoIsDone} idx={i} />
           </div>
         ))}
       </div>
