@@ -19,12 +19,13 @@ export default function Home() {
     });
   };
 
-  const handleCheckboxChange = () => {};
-
   const handleSubmit = () => {
-    if (newTodo.value !== "") {
-      addTodo(newTodo.value);
+    //newTodo.valueが空 or undefindの時は何もしない
+    if (newTodo.value === "" || newTodo.value === undefined) {
+      return;
     }
+
+    addTodo(newTodo.value);
 
     // after submitting clear the input
     setNewTodo({
@@ -50,12 +51,7 @@ export default function Home() {
             {/* <Toggle /> */}
           </p>
 
-          <Input
-            todo={newTodo}
-            onInputChange={handleInputChange}
-            onCheckboxChange={handleCheckboxChange}
-            onSubmit={handleSubmit}
-          />
+          <Input todo={newTodo} onInputChange={handleInputChange} onSubmit={handleSubmit} />
 
           <TodoList />
           <TodoListFilters />
