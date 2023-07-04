@@ -11,13 +11,14 @@ const useTodos = () => {
   const todos = useRecoilValue(filteredTodoState);
   const [todoList, setTodoList] = useRecoilState(todoState);
 
+
   const addTodo = useCallback(
     (todo) => {
       // todoListに追加する
       setTodoList((oldTodoList) => [
         ...oldTodoList,
         {
-          id: shortid.generate(),
+          id: todos.length + 1,
           title: todo,
           isDone: false,
         },
