@@ -5,14 +5,14 @@ import CheckedIcon from "@/svgs/checkedIcon";
 
 const TodoItem = ({ todo, idx, deleteTodo }) => {
   return (
-    <div className="flex justify-between items-center  ">
+    <div className="flex justify-between items-center">
       <div className="flex items-center">
         <div
-          className={`w-6 h-6 rounded-full border dark:border-white/50  mr-4 hover:border-indigo-500 ${
+          className={`w-6 h-6 flex items-center justify-center rounded-full border dark:border-white/50  mr-4 hover:border-indigo-500 ${
             todo.isDone ? "bg-gradient-to-r from-cyan-500 to-purple-500 border-0" : ""
           }`}
         >
-          <CheckedIcon className={` ${todo.isDone ? " " : "invisible"}`} />
+          <CheckedIcon className={` ${todo.isDone ? "text-white w-4 h-4 mx-auto" : "invisible"}`} />
         </div>
         <p className="text-sm sm:text-base">{todo.title}</p>
       </div>
@@ -38,7 +38,7 @@ const TodoItem = ({ todo, idx, deleteTodo }) => {
 };
 
 export default function TodoList() {
-  const { todos } = useTodos();
+  const { todos, deleteTodo, updateTodoIsDone } = useTodos();
   return (
     <div className="mt-5 sm:mt-7">
       <div className="rounded">
@@ -46,6 +46,7 @@ export default function TodoList() {
           <div
             key={i}
             className="group transition ease-in-out cursor-pointer py-4 sm:py-4.5 pr-8 pl-8 dark:bg-gray-800 first:rounded-t last:rounded-b border-b border-gray-600"
+            onClick={() => updateTodoIsDone(i, !todo.isDone)}
           >
             <TodoItem todo={todo} deleteTodo={deleteTodo} idx={i} />
           </div>
