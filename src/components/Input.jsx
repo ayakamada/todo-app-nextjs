@@ -1,7 +1,7 @@
 import React, { ReactElement, useCallback } from "react";
 import { useTheme } from "next-themes";
 
-export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit, readonly }) {
+export default function Input({ todo, onInputChange, onSubmit, readonly }) {
   const { theme } = useTheme();
 
   const updateInput = useCallback(
@@ -10,14 +10,6 @@ export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit,
     },
     [onInputChange]
   );
-
-  const updateChecked = useCallback(() => {}, []);
-
-  const handleInputClick = useCallback(() => {
-    if (!readonly) return;
-
-    // onCheckboxChange(!todo.completed);
-  }, [todo]);
 
   const handleSubmit = useCallback(
     (e) => {
@@ -58,7 +50,6 @@ export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit,
           placeholder="Create a new todo.."
           value={todo.value}
           onChange={updateInput}
-          onClick={handleInputClick}
           readOnly={readonly}
           maxLength={125}
           aria-label="Todo"
