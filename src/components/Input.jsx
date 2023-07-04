@@ -33,19 +33,7 @@ export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit,
   return (
     <section>
       <div className="absolute top-3 sm:top-4 left-5">
-        <div className="relative">
-          <img
-            className={`
-            absolute
-            top-2
-            left-1.5
-            pointer-events-none
-
-          `}
-            src="/images/icon-check.svg"
-            alt="Checkbox image for checkbox input"
-          />
-        </div>
+        <div className="relative"></div>
       </div>
       <form onSubmit={handleSubmit}>
         <input
@@ -76,7 +64,6 @@ export default function Input({ todo, onInputChange, onCheckboxChange, onSubmit,
           aria-label="Todo"
         />
       </form>
-
     </section>
   );
 }
