@@ -1,6 +1,6 @@
 import { useRecoilValue, useRecoilState } from "recoil";
 import { useCallback } from "react";
-import shortid from "shortid";
+import { arrayMoveImmutable } from "array-move";
 
 import todoState from "@/recoil/atoms/todo";
 import filteredTodoState from "@/recoil/selectors/todo-filter";
@@ -11,6 +11,7 @@ const useTodos = () => {
   const todos = useRecoilValue(filteredTodoState);
   const [todoList, setTodoList] = useRecoilState(todoState);
 
+  console.log(todoList);
 
   const addTodo = useCallback(
     (todo) => {
@@ -51,12 +52,23 @@ const useTodos = () => {
     [setTodoList, todos]
   );
 
+  // react-sortable-hocで順番を変えた時に使用
+  const reorderTodo = useCallback(
+    (oldIdx, newIdx) => {
+      const newList = arrayMoveImmutable(todoList, oldIdx, newIdx);
+
+      setTodoList(newList);
+    },
+    [setTodoList, todoList]
+  );
+
   return {
     todos,
     setTodoList,
     addTodo,
     deleteTodo,
     updateTodoIsDone,
+    reorderTodo,
   };
 };
 
