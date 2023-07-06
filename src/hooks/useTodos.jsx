@@ -11,8 +11,6 @@ const useTodos = () => {
   const todos = useRecoilValue(filteredTodoState);
   const [todoList, setTodoList] = useRecoilState(todoState);
 
-  console.log(todoList);
-
   const addTodo = useCallback(
     (todo) => {
       // todoListに追加する
