@@ -56,6 +56,9 @@ export default function Home() {
           <TodoList />
           <TodoListFilters />
         </div>
+        <div className="mt-10 text-center dark:text-slate-300 text-slate-600">
+          <small>Drag and drop to reorder list</small>
+        </div>
       </div>
 
       <Footer />
