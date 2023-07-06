@@ -14,7 +14,7 @@ const TodoListFilters = () => {
   );
 
   return (
-    <div className="text-sm sm:text-base font-bold text-center p-4 rounded-md bg-white dark:bg-gray-800 mt-8">
+    <div className="tracking-wider text-sm sm:text-base font-bold text-center p-4 rounded-md bg-white dark:bg-gray-800 mt-8">
       <span
         className={`px-3 sm:px-2 hover:text-gray-700 dark:hover:text-slate-300 transition ease-linear cursor-pointer ${
           filter === "ShowAll" ? "text-sky-700" : " text-sky-700 dark:text-slate-500"
